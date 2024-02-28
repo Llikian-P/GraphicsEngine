@@ -3,6 +3,9 @@
  * @brief Contains the main function
  ******************************************************************************************************/
 
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
+
 int main() {
 
 }
