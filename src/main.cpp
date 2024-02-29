@@ -3,9 +3,12 @@
  * @brief Contains the main function
  ******************************************************************************************************/
 
-#include "glad/glad.h"
-#include "GLFW/glfw3.h"
+#include "Application.hpp"
 
 int main() {
+    Application app;
 
+    app.run();
+
+    return 0;
 }
