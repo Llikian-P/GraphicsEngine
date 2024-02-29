@@ -4,7 +4,14 @@ project(GraphicsEngine)
 ###
 
 add_executable(${PROJECT_NAME}
+        # Main
         src/main.cpp
+
+        # Libraries
+        lib/glad/src/glad.c
+
+        # Sources
+        src/Application.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC lib/glad/include)
