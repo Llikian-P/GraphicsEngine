@@ -1,19 +1,19 @@
 cmake_minimum_required(VERSION 3.26)
 project(GraphicsEngine)
-set(NAME graphics_engine)
 
 ###
 
-add_executable(${NAME}
+add_executable(${PROJECT_NAME}
         src/main.cpp
 )
 
-target_include_directories(${NAME} PUBLIC extern/glad/include)
-target_include_directories(${NAME} PUBLIC extern/glfw/include)
-target_include_directories(${NAME} PUBLIC include)
+target_include_directories(${PROJECT_NAME} PUBLIC lib/glad/include)
+target_include_directories(${PROJECT_NAME} PUBLIC lib/glfw/include)
+target_include_directories(${PROJECT_NAME} PUBLIC include)
 
-target_link_directories(${NAME} PUBLIC extern/glfw/src)
-target_link_libraries(${NAME} PUBLIC glfw3)
+target_link_directories(${PROJECT_NAME} PUBLIC lib/glfw/src)
+target_link_libraries(${PROJECT_NAME} PUBLIC glfw3)
 
 ###
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
