@@ -13,7 +13,7 @@ cmake -B build && cmake --build build
 
 ### Run
 ```bash
-bin/ChessGame
+bin/GraphicsEngine
 ```
 
 ## Licence
