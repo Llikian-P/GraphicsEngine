@@ -57,47 +57,19 @@ const float* Matrix4::operator [](int row) const {
 }
 
 void Matrix4::operator +=(const Matrix4& mat) {
-    values[0][0] += mat[0][0];
-    values[0][1] += mat[0][1];
-    values[0][2] += mat[0][2];
-    values[0][3] += mat[0][3];
-
-    values[1][0] += mat[1][0];
-    values[1][1] += mat[1][1];
-    values[1][2] += mat[1][2];
-    values[1][3] += mat[1][3];
-
-    values[2][0] += mat[2][0];
-    values[2][1] += mat[2][1];
-    values[2][2] += mat[2][2];
-    values[2][3] += mat[2][3];
-
-    values[3][0] += mat[3][0];
-    values[3][1] += mat[3][1];
-    values[3][2] += mat[3][2];
-    values[3][3] += mat[3][3];
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            values[i][j] += mat[i][j];
+        }
+    }
 }
 
 void Matrix4::operator -=(const Matrix4& mat) {
-    values[0][0] -= mat[0][0];
-    values[0][1] -= mat[0][1];
-    values[0][2] -= mat[0][2];
-    values[0][3] -= mat[0][3];
-
-    values[1][0] -= mat[1][0];
-    values[1][1] -= mat[1][1];
-    values[1][2] -= mat[1][2];
-    values[1][3] -= mat[1][3];
-
-    values[2][0] -= mat[2][0];
-    values[2][1] -= mat[2][1];
-    values[2][2] -= mat[2][2];
-    values[2][3] -= mat[2][3];
-
-    values[3][0] -= mat[3][0];
-    values[3][1] -= mat[3][1];
-    values[3][2] -= mat[3][2];
-    values[3][3] -= mat[3][3];
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            values[i][j] -= mat[i][j];
+        }
+    }
 }
 
 void Matrix4::operator *=(const Matrix4& mat) {
@@ -123,105 +95,59 @@ void Matrix4::operator *=(const Matrix4& mat) {
 }
 
 void Matrix4::operator +=(float scalar) {
-    values[0][0] += scalar;
-    values[0][1] += scalar;
-    values[0][2] += scalar;
-    values[0][3] += scalar;
-
-    values[1][0] += scalar;
-    values[1][1] += scalar;
-    values[1][2] += scalar;
-    values[1][3] += scalar;
-
-    values[2][0] += scalar;
-    values[2][1] += scalar;
-    values[2][2] += scalar;
-    values[2][3] += scalar;
-
-    values[3][0] += scalar;
-    values[3][1] += scalar;
-    values[3][2] += scalar;
-    values[3][3] += scalar;
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            values[i][j] += scalar;
+        }
+    }
 }
 
 void Matrix4::operator -=(float scalar) {
-    values[0][0] -= scalar;
-    values[0][1] -= scalar;
-    values[0][2] -= scalar;
-    values[0][3] -= scalar;
-
-    values[1][0] -= scalar;
-    values[1][1] -= scalar;
-    values[1][2] -= scalar;
-    values[1][3] -= scalar;
-
-    values[2][0] -= scalar;
-    values[2][1] -= scalar;
-    values[2][2] -= scalar;
-    values[2][3] -= scalar;
-
-    values[3][0] -= scalar;
-    values[3][1] -= scalar;
-    values[3][2] -= scalar;
-    values[3][3] -= scalar;
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            values[i][j] -= scalar;
+        }
+    }
 }
 
 void Matrix4::operator *=(float scalar) {
-    values[0][0] *= scalar;
-    values[0][1] *= scalar;
-    values[0][2] *= scalar;
-    values[0][3] *= scalar;
-
-    values[1][0] *= scalar;
-    values[1][1] *= scalar;
-    values[1][2] *= scalar;
-    values[1][3] *= scalar;
-
-    values[2][0] *= scalar;
-    values[2][1] *= scalar;
-    values[2][2] *= scalar;
-    values[2][3] *= scalar;
-
-    values[3][0] *= scalar;
-    values[3][1] *= scalar;
-    values[3][2] *= scalar;
-    values[3][3] *= scalar;
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            values[i][j] *= scalar;
+        }
+    }
 }
 
 void Matrix4::operator /=(float scalar) {
-    values[0][0] /= scalar;
-    values[0][1] /= scalar;
-    values[0][2] /= scalar;
-    values[0][3] /= scalar;
-
-    values[1][0] /= scalar;
-    values[1][1] /= scalar;
-    values[1][2] /= scalar;
-    values[1][3] /= scalar;
-
-    values[2][0] /= scalar;
-    values[2][1] /= scalar;
-    values[2][2] /= scalar;
-    values[2][3] /= scalar;
-
-    values[3][0] /= scalar;
-    values[3][1] /= scalar;
-    values[3][2] /= scalar;
-    values[3][3] /= scalar;
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            values[i][j] /= scalar;
+        }
+    }
 }
 
 Matrix4 operator +(const Matrix4& mat1, const Matrix4& mat2) {
-    return Matrix4{mat1[0][0] + mat2[0][0], mat1[0][1] + mat2[0][1], mat1[0][2] + mat2[0][2], mat1[0][3] + mat2[0][3],
-                   mat1[1][0] + mat2[1][0], mat1[1][1] + mat2[1][1], mat1[1][2] + mat2[1][2], mat1[1][3] + mat2[1][3],
-                   mat1[2][0] + mat2[2][0], mat1[2][1] + mat2[2][1], mat1[2][2] + mat2[2][2], mat1[2][3] + mat2[2][3],
-                   mat1[3][0] + mat2[3][0], mat1[3][1] + mat2[3][1], mat1[3][2] + mat2[3][2], mat1[3][3] + mat2[3][3]};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = mat1[i][j] + mat2[i][j];
+        }
+    }
+
+    return m;
 }
 
 Matrix4 operator -(const Matrix4& mat1, const Matrix4& mat2) {
-    return Matrix4{mat1[0][0] - mat2[0][0], mat1[0][1] - mat2[0][1], mat1[0][2] - mat2[0][2], mat1[0][3] - mat2[0][3],
-                   mat1[1][0] - mat2[1][0], mat1[1][1] - mat2[1][1], mat1[1][2] - mat2[1][2], mat1[1][3] - mat2[1][3],
-                   mat1[2][0] - mat2[2][0], mat1[2][1] - mat2[2][1], mat1[2][2] - mat2[2][2], mat1[2][3] - mat2[2][3],
-                   mat1[3][0] - mat2[3][0], mat1[3][1] - mat2[3][1], mat1[3][2] - mat2[3][2], mat1[3][3] - mat2[3][3]};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = mat1[i][j] - mat2[i][j];
+        }
+    }
+
+    return m;
 }
 
 Matrix4 operator *(const Matrix4& mat1, const Matrix4& mat2) {
@@ -247,59 +173,99 @@ Matrix4 operator *(const Matrix4& mat1, const Matrix4& mat2) {
 }
 
 Matrix4 operator +(const Matrix4& mat, float scalar) {
-    return Matrix4{mat[0][0] + scalar, mat[0][1] + scalar, mat[0][2] + scalar, mat[0][3] + scalar,
-                   mat[1][0] + scalar, mat[1][1] + scalar, mat[1][2] + scalar, mat[1][3] + scalar,
-                   mat[2][0] + scalar, mat[2][1] + scalar, mat[2][2] + scalar, mat[2][3] + scalar,
-                   mat[3][0] + scalar, mat[3][1] + scalar, mat[3][2] + scalar, mat[3][3] + scalar};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = mat[i][j] + scalar;
+        }
+    }
+
+    return m;
 }
 
 Matrix4 operator -(const Matrix4& mat, float scalar) {
-    return Matrix4{mat[0][0] - scalar, mat[0][1] - scalar, mat[0][2] - scalar, mat[0][3] - scalar,
-                   mat[1][0] - scalar, mat[1][1] - scalar, mat[1][2] - scalar, mat[1][3] - scalar,
-                   mat[2][0] - scalar, mat[2][1] - scalar, mat[2][2] - scalar, mat[2][3] - scalar,
-                   mat[3][0] - scalar, mat[3][1] - scalar, mat[3][2] - scalar, mat[3][3] - scalar};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = mat[i][j] - scalar;
+        }
+    }
+
+    return m;
 }
 
 Matrix4 operator *(const Matrix4& mat, float scalar) {
-    return Matrix4{mat[0][0] * scalar, mat[0][1] * scalar, mat[0][2] * scalar, mat[0][3] * scalar,
-                   mat[1][0] * scalar, mat[1][1] * scalar, mat[1][2] * scalar, mat[1][3] * scalar,
-                   mat[2][0] * scalar, mat[2][1] * scalar, mat[2][2] * scalar, mat[2][3] * scalar,
-                   mat[3][0] * scalar, mat[3][1] * scalar, mat[3][2] * scalar, mat[3][3] * scalar};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = mat[i][j] * scalar;
+        }
+    }
+
+    return m;
 }
 
 Matrix4 operator /(const Matrix4& mat, float scalar) {
-    return Matrix4{mat[0][0] / scalar, mat[0][1] / scalar, mat[0][2] / scalar, mat[0][3] / scalar,
-                   mat[1][0] / scalar, mat[1][1] / scalar, mat[1][2] / scalar, mat[1][3] / scalar,
-                   mat[2][0] / scalar, mat[2][1] / scalar, mat[2][2] / scalar, mat[2][3] / scalar,
-                   mat[3][0] / scalar, mat[3][1] / scalar, mat[3][2] / scalar, mat[3][3] / scalar};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = mat[i][j] / scalar;
+        }
+    }
+
+    return m;
 }
 
 Matrix4 operator +(float scalar, const Matrix4& mat) {
-    return Matrix4{scalar + mat[0][0], scalar + mat[0][1], scalar + mat[0][2], scalar + mat[0][3],
-                   scalar + mat[1][0], scalar + mat[1][1], scalar + mat[1][2], scalar + mat[1][3],
-                   scalar + mat[2][0], scalar + mat[2][1], scalar + mat[2][2], scalar + mat[2][3],
-                   scalar + mat[3][0], scalar + mat[3][1], scalar + mat[3][2], scalar + mat[3][3]};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = scalar + mat[i][j];
+        }
+    }
+
+    return m;
 }
 
 Matrix4 operator -(float scalar, const Matrix4& mat) {
-    return Matrix4{scalar - mat[0][0], scalar - mat[0][1], scalar - mat[0][2], scalar - mat[0][3],
-                   scalar - mat[1][0], scalar - mat[1][1], scalar - mat[1][2], scalar - mat[1][3],
-                   scalar - mat[2][0], scalar - mat[2][1], scalar - mat[2][2], scalar - mat[2][3],
-                   scalar - mat[3][0], scalar - mat[3][1], scalar - mat[3][2], scalar - mat[3][3]};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = scalar - mat[i][j];
+        }
+    }
+
+    return m;
 }
 
 Matrix4 operator *(float scalar, const Matrix4& mat) {
-    return Matrix4{scalar * mat[0][0], scalar * mat[0][1], scalar * mat[0][2], scalar * mat[0][3],
-                   scalar * mat[1][0], scalar * mat[1][1], scalar * mat[1][2], scalar * mat[1][3],
-                   scalar * mat[2][0], scalar * mat[2][1], scalar * mat[2][2], scalar * mat[2][3],
-                   scalar * mat[3][0], scalar * mat[3][1], scalar * mat[3][2], scalar * mat[3][3]};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = scalar * mat[i][j];
+        }
+    }
+
+    return m;
 }
 
 Matrix4 operator /(float scalar, const Matrix4& mat) {
-    return Matrix4{scalar / mat[0][0], scalar / mat[0][1], scalar / mat[0][2], scalar / mat[0][3],
-                   scalar / mat[1][0], scalar / mat[1][1], scalar / mat[1][2], scalar / mat[1][3],
-                   scalar / mat[2][0], scalar / mat[2][1], scalar / mat[2][2], scalar / mat[2][3],
-                   scalar / mat[3][0], scalar / mat[3][1], scalar / mat[3][2], scalar + mat[3][3]};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = scalar / mat[i][j];
+        }
+    }
+
+    return m;
 }
 
 vec3 operator *(const Matrix4& mat, const vec3& vec) {
@@ -354,10 +320,15 @@ float determinant(const Matrix4& mat) {
 }
 
 Matrix4 transpose(const Matrix4& mat) {
-    return Matrix4{mat[0][0], mat[1][0], mat[2][0], mat[3][0],
-                   mat[0][1], mat[1][1], mat[2][1], mat[3][1],
-                   mat[0][2], mat[1][2], mat[2][2], mat[3][2],
-                   mat[0][3], mat[1][3], mat[2][3], mat[3][3]};
+    Matrix4 m;
+
+    for(int i = 0 ; i < 4 ; ++i) {
+        for(int j = 0 ; j < 4 ; ++j) {
+            m(i, j) = mat[j][i];
+        }
+    }
+
+    return m;
 }
 
 Matrix4 inverse(const Matrix4& mat) {
